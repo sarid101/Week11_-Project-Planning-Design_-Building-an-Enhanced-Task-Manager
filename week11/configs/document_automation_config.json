@@ -1,0 +1,59 @@
+{
+  "global_data": {
+    "REPORT_DATE": "2026-10-15",
+    "AUTHOR_NAME": "AI Document Agent",
+    "COMPANY_NAME": "Automated Docs Inc."
+  },
+  "output_files": {
+    "generated_report": "documents/generated_report.docx",
+    "watermarked_pdf": "documents/watermarked_document.pdf",
+    "merged_pdf": "documents/merged_docs.pdf"
+  },
+  "tasks": [
+    {
+      "name": "Generate Monthly Performance Report",
+      "type": "generate_word_report",
+      "template_path": "templates/report_template.docx",
+      "output_path": "documents/generated_report.docx",
+      "data": {
+        "REPORT_TITLE": "Monthly Performance Summary",
+        "INTRODUCTION_TEXT": "This automated report provides a summary of key performance indicators.",
+        "MONTH_PERIOD": "September 2026"
+      },
+      "table_data": [
+        ["Category", "Value", "Trend"],
+        ["Sales Revenue", "$120,000", "Up 10%"],
+        ["Customer Acquisition", "500", "Stable"],
+        ["Project Completion Rate", "95%", "Excellent"]
+      ]
+    },
+    {
+      "name": "Apply Confidential Watermark to PDF",
+      "type": "apply_pdf_watermark",
+      "input_pdf": "documents/source_document.pdf",
+      "output_pdf": "documents/watermarked_document.pdf",
+      "watermark_text": "CONFIDENTIAL",
+      "font_size": 70,
+      "color": [1, 0, 0, 0.15],
+      "angle": 55
+    },
+    {
+      "name": "Merge Project Documentation",
+      "type": "merge_pdfs",
+      "input_pdfs": ["documents/dummy_doc1.pdf", "documents/dummy_doc2.pdf"],
+      "output_pdf": "documents/merged_docs.pdf"
+    },
+    {
+      "name": "Extract Text from Generated Word Report",
+      "type": "extract_word_text",
+      "input_docx": "documents/generated_report.docx",
+      "output_text_file": "documents/extracted_word_text.txt"
+    },
+    {
+      "name": "Extract Text from Source PDF",
+      "type": "extract_pdf_text",
+      "input_pdf": "documents/source_document.pdf",
+      "output_text_file": "documents/extracted_pdf_text.txt"
+    }
+  ]
+}
